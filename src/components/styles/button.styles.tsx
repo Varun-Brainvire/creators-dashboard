@@ -8,3 +8,7 @@ export const Button = styled.button`
   padding: 10px;
   float: right;
 `;
+
+export const ButtonContainer = styled.div`
+    height: 32px;
+`
