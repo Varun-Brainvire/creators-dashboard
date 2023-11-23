@@ -36,6 +36,7 @@ const Buttons = () => {
 
   const onDateChange = (dates: any) => {
     const [start, end] = dates;
+    console.log(dates,"dates")
     setStartDate(start);
     setEndDate(end);
 
@@ -114,7 +115,7 @@ const Buttons = () => {
         startDate={startDate}
         endDate={endDate}
         selected={startDate}
-        dateFormat="dd/MM"
+        dateFormat="d MMM"
         // inline
         selectsRange
         onChange={onDateChange}
@@ -123,13 +124,13 @@ const Buttons = () => {
         wrapperClassName="datePicker"
       />
       </Wrapper>
-      <DateRange
+      {/* <DateRange
         editableDateInputs={true}
         moveRangeOnFirstSelection={false}
         ranges={state}
         onChange={(item) => setState([item.selection])}
         // rangeColors="green"
-      />
+      /> */}
     </ButtonContainer>
   );
 };

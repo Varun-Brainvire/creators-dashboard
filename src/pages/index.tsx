@@ -6,6 +6,7 @@ import { Button, Container } from '@/components/styles/button.styles'
 import { ChartDiv } from '@/components/styles/ChartDiv.styles'
 import Buttons from '@/components/Buttons'
 import Chart from '@/components/Chart'
+import ProductComponent from '@/components/ProductComponent'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,8 @@ export default function Home() {
       {/* <h1>Text for testing fonts</h1> */}
       <Buttons />
       <ChartDiv />
-      <Chart />
+      {/* <Chart /> */}
+      <ProductComponent />
     </Container>
   )
 }
