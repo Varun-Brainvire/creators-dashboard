@@ -1,0 +1,87 @@
+[
+    {
+        "id":1,
+        "storeName":"Bangerhead",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":2,
+        "storeName":"Lyko",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":3,
+        "storeName":"Åhléns",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":4,
+        "storeName":"Meds",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":5,
+        "storeName":"Kicks",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":6,
+        "storeName":"Bangerhead",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":7,
+        "storeName":"Lyko",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":8,
+        "storeName":"Åhléns",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":9,
+        "storeName":"Meds",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":10,
+        "storeName":"Kicks",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":11,
+        "storeName":"Bangerhead",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":12,
+        "storeName":"Lyko",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":13,
+        "storeName":"Åhléns",
+        "price":"SEK 2702",
+        "flag":"stores"
+    },
+    {
+        "id":14,
+        "storeName":"Meds",
+        "price":"SEK 2702",
+        "flag":"stores"
+    }
+    
+]

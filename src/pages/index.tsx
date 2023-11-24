@@ -17,8 +17,9 @@ export default function Home() {
       {/* <h1>Hello</h1> */}
       {/* <h1>Text for testing fonts</h1> */}
       <Buttons />
-      <ChartDiv />
+      <ChartDiv>
       {/* <Chart /> */}
+      </ChartDiv>
       <ProductComponent />
     </Container>
   )

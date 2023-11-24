@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-    MainWrapper,
+  MainWrapper,
   OneCardComponent,
   ProductContent,
   SekDiv,
@@ -8,6 +8,8 @@ import {
 } from "./styles/button.styles";
 import Image from "next/image";
 import image from "../../public/productimg/curvsoftcurvlong.svg";
+import PostImage from "../../public/postimg/twogirl.png";
+import Arrow from "../../public/reshot-icon-arrow-chevron-right-WDGHUKQ634.svg"
 
 interface Product {
   id: number;
@@ -19,7 +21,14 @@ interface Product {
   cvrPercent: number;
 }
 
-const CardComponent = (props: Product,title:string) => {
+interface Post{
+  id: number;
+  title:string;
+  price:number;
+  flag:string
+}
+
+const CardComponent = (props: Product | Post, title: string) => {
   console.log(props, "Inside Card Component");
 
   const [data, setData] = useState({});
@@ -32,33 +41,84 @@ const CardComponent = (props: Product,title:string) => {
 
   return (
     <>
+    <div>
       <OneCardComponent>{props.title}</OneCardComponent>
+      {/* <svg>
+        <polygon points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707">
+        </polygon>
+      </svg> */}
+      {/* {Arrow} */}
+    </div>
       <MainWrapper>
-      {props.productData.map((details) => {
-        return (
-          <>
-           
-              <ProductContent>
-                <Image src={image} height={80} width={80} alt="hi" />
-                <TitleDiv>
-                  <p style={{ margin: "0px", fontWeight: "2px" }}>
-                    {details.name}
-                  </p>
-                  <span>{details.percent + "%" + " " + details.type} </span>
-                </TitleDiv>
-                <SekDiv>
-                  <p style={{ margin: "0px", fontWeight: "12px" }}>SEK 625</p>
-                  <span style={{ fontWeight: "10px" }}>
-                    CVR {details.cvrPercent + "%"}{" "}
-                  </span>
-                </SekDiv>
-              </ProductContent>
-            
-          </>
-        );
-      })}
+        {props.productData.map((details) => {
+          if (details.flag === "product") {
+            return (
+              <>
+                <ProductContent>
+                  <Image src={image} height={80} width={80} alt="hi" />
+                  <TitleDiv>
+                    <p style={{ margin: "0px", fontWeight: "2px" }}>
+                      {details.name}
+                    </p>
+                    <span>{details.percent + "%" + " " + details.type} </span>
+                  </TitleDiv>
+                  <SekDiv>
+                    <p style={{ margin: "0px", fontWeight: "12px" }}>SEK 625</p>
+                    <span style={{ fontWeight: "10px" }}>
+                      CVR {details.cvrPercent + "%"}{" "}
+                    </span>
+                  </SekDiv>
+                </ProductContent>
+              </>
+            );
+          }
+          if (details.flag === "post") {
+            return (
+              <>
+                <ProductContent>
+                  <Image src={PostImage} height={50} width={50} alt="post" />
+                  <TitleDiv>
+                    <p>
+                      {details.title}
+                    </p>
+                    {/* <span>{details.price}</span> */}
+                  </TitleDiv>
+                  <SekDiv>
+                    <p>
+                      {details.price}
+                    </p>
+                    {/* <span style={{ fontWeight: "10px" }}>
+                      CVR {details.cvrPercent + "%"}{" "}
+                    </span> */}
+                  </SekDiv>
+                </ProductContent>
+              </>
+            );
+          }
+
+          if (details.flag === "stores") {
+            return (
+              <>
+                <ProductContent>
+                  {/* <Image src={PostImage} height={50} width={50} alt="post" /> */}
+                  <TitleDiv>
+                    <p>{details.storeName}</p>
+                    {/* <span>{details.price}</span> */}
+                  </TitleDiv>
+                  <SekDiv>
+                    <p style={{ margin: "0px", fontWeight: "12px" }}>
+                      {details.price}
+                    </p>
+                    {/* <span style={{ fontWeight: "10px" }}>
+                      CVR {details.cvrPercent + "%"}{" "}
+                    </span> */}
+                  </SekDiv>
+                </ProductContent>
+              </>
+            );
+          }
+        })}
       </MainWrapper>
-     
     </>
   );
 };

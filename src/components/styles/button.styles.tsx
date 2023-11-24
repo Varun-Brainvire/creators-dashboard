@@ -19,6 +19,7 @@ export const Button = styled.button`
   border-radius: 20px;
   margin: 8px;
   padding: 10px;
+  white-space: nowrap;
   /* float: right; */
 `;
 
@@ -28,22 +29,44 @@ export const Container = styled.div`
   /* border: 1px solid red; */
   justify-content: center;
   margin: auto;
-  height: 122vh;
+  /* height: 122vh; */
   /* align-items: center; */
-  width: 70%;
+  /* width: 70%; */
+  max-width: 1440px;
 `;
 
 export const ButtonContainer = styled.div`
-  height: 32px;
+  /* height: 32px; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 31px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   .rdrMonths {
     .rdrStartEdge,
     .rdrInRange {
       background: red !important;
     }
+  }
+  /* max-height: 47.5vh; */
+  /* overflow-x: scroll; */
+
+  &::-webkit-scrollbar {
+    /* width: 1px; */
+    background: #f1f1f1;
+  }
+
+  @media (max-width: 576px) {
+    overflow-x: scroll;
+    justify-content: flex-start;
+    /* border-radius: 0px; */
+  }
+
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+    justify-content: flex-start;
+    /* border-radius: 0px; */
   }
 `;
 
@@ -99,6 +122,30 @@ export const Columns = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
+
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0 5% 0;
+  }
+
+  @media (max-width: 992px) {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0 5% 0;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0 5% 0;
+  }
+
+  @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0 5% 0;
+  }
 `;
 
 export const Column = styled.div<ColumnProps>`
@@ -113,6 +160,26 @@ export const Column = styled.div<ColumnProps>`
   -webkit-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   -moz-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
+
+  @media (max-width: 576px) {
+    flex: ${({ sizeSm }) => sizeSm};
+    border-radius: 0px;
+  }
+
+  @media (max-width: 768px) {
+    flex: ${({ sizeMd }) => sizeMd};
+    border-radius: 0px;
+  }
+
+  @media (max-width: 992px) {
+    flex: ${({ sizeLg }) => sizeLg};
+    border-radius: 0px;
+  }
+
+  @media (max-width: 1200px) {
+    flex: ${({ sizeXl }) => sizeXl};
+    border-radius: 0px;
+  }
 `;
 
 export const OneCardComponent = styled.p`
@@ -133,23 +200,27 @@ export const CardsComponentContainer = styled.div`
 export const ProductContent = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 0px 10px 0px 10px;
+  justify-content: space-between;
+  padding: 10px;
   border-bottom: 1px solid #efefef;
 `;
 
 export const TitleDiv = styled.div`
   p {
     font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   span {
-    font-size: 10px;
+    font-size: 12px;
+    background-color: #f4f0ec;
   }
 `;
 
 export const SekDiv = styled.div`
   p {
-    font-size: 10px;
+    font-size: 15px;
   }
   span {
     font-size: 10px;
@@ -163,4 +234,8 @@ export const MainWrapper = styled.div`
     width: 1px;
     background: #f1f1f1;
   }
+`;
+
+export const TitleContainer = styled.div`
+  border-color: #0668be;
 `;

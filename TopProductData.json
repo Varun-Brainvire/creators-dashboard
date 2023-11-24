@@ -54,8 +54,8 @@
     "name": "Product 6",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 273,
-    "flag":"post",
     "type": "Lyco",
+    "flag":"product",
     "percent": 4,
     "cvrPercent": 35
   },
@@ -64,8 +64,8 @@
     "name": "Product 7",
     "image": "../product-images/ghd-curve-soft-curl-tong-1121-121-0000_1.jpg.svg",
     "price": 493,
-    "flag":"post",
     "type": "Pricerunner",
+    "flag":"product",
     "percent": 11,
     "cvrPercent": 12
   },
@@ -74,8 +74,8 @@
     "name": "Product 8",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 647,
-    "flag":"post",
     "type": "Lyco",
+    "flag":"product",
     "percent": 7,
     "cvrPercent": 23
   },
@@ -84,8 +84,8 @@
     "name": "Product 9",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 791,
-    "flag":"post",
     "type": "Pricerunner",
+    "flag":"product",
     "percent": 2,
     "cvrPercent": 21
   },
@@ -94,8 +94,8 @@
     "name": "Product 10",
     "image": "../product-images/skarmavild.svg",
     "price": 15,
-    "flag":"post",
     "type": "Lyco",
+    "flag":"product",
     "percent": 10,
     "cvrPercent": 47
   },
@@ -104,8 +104,8 @@
     "name": "Product 11",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 11,
-    "flag":"stories",
     "type": "Pricerunner",
+    "flag":"product",
     "percent": 10,
     "cvrPercent": 22
   },
@@ -114,8 +114,8 @@
     "name": "Product 12",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 439,
-    "flag":"stories",
     "type": "Lyco",
+    "flag":"product",
     "percent": 7,
     "cvrPercent": 14
   },
@@ -124,8 +124,8 @@
     "name": "Product 13",
     "image": "../product-images/ghd-curve-soft-curl-tong-1121-121-0000_1.jpg.svg",
     "price": 791,
-    "flag":"stories",
     "type": "Pricerunner",
+    "flag":"product",
     "percent": 18,
     "cvrPercent": 14
   },
@@ -134,8 +134,8 @@
     "name": "Product 14",
     "image": "../product-images/skarmavild.svg",
     "price": 301,
-    "flag":"stories",
     "type": "Lyco",
+    "flag":"product",
     "percent": 18,
     "cvrPercent": 32
   },
@@ -144,8 +144,8 @@
     "name": "Product 15",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 995,
-    "flag":"stories",
     "type": "Pricerunner",
+    "flag":"product",
     "percent": 7,
     "cvrPercent": 12
   },
@@ -154,8 +154,8 @@
     "name": "Product 16",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 633,
-    "flag":"product",
     "type": "Lyco",
+    "flag":"product",
     "percent": 15,
     "cvrPercent": 48
   },
@@ -164,8 +164,8 @@
     "name": "Product 17",
     "image": "../product-images/ghd-curve-soft-curl-tong-1121-121-0000_1.jpg.svg",
     "price": 872,
-    "flag":"stories",
     "type": "Pricerunner",
+    "flag":"product",
     "percent": 10,
     "cvrPercent": 20
   },
@@ -174,8 +174,8 @@
     "name": "Product 18",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 488,
-    "flag":"post",
     "type": "Lyco",
+    "flag":"product",
     "percent": 0,
     "cvrPercent": 39
   },
@@ -184,8 +184,8 @@
     "name": "Product 19",
     "image": "../product-images/skarmavild.svg",
     "price": 497,
-    "flag":"stories",
     "type": "Pricerunner",
+    "flag":"product",
     "percent": 14,
     "cvrPercent": 29
   },
@@ -194,8 +194,8 @@
     "name": "Product 20",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 608,
-    "flag":"post",
     "type": "Lyco",
+    "flag":"product",
     "percent": 12,
     "cvrPercent": 11
   }
