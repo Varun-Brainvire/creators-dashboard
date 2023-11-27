@@ -3,7 +3,10 @@ import {
   MainWrapper,
   OneCardComponent,
   ProductContent,
+  ProductNameDiv,
   SekDiv,
+  StickyTitle,
+  StyledLink,
   TitleDiv,
 } from "./styles/button.styles";
 import Image from "next/image";
@@ -41,26 +44,30 @@ const CardComponent = (props: Product | Post, title: string) => {
 
   return (
     <>
-    <div>
+    <StickyTitle>
+      <StyledLink href={props.title.replace(/\s/g, "").toLowerCase()}>
       <OneCardComponent>{props.title}</OneCardComponent>
+      </StyledLink>
       {/* <svg>
         <polygon points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707">
         </polygon>
       </svg> */}
       {/* {Arrow} */}
-    </div>
-      <MainWrapper>
+    </StickyTitle>
+      <MainWrapper height = {true}>
         {props.productData.map((details) => {
           if (details.flag === "product") {
             return (
               <>
                 <ProductContent>
-                  <Image src={image} height={80} width={80} alt="hi" />
                   <TitleDiv>
+                  <Image src={image} height={80} width={80} alt="hi" />
+                  <ProductNameDiv>
                     <p style={{ margin: "0px", fontWeight: "2px" }}>
                       {details.name}
                     </p>
                     <span>{details.percent + "%" + " " + details.type} </span>
+                  </ProductNameDiv>
                   </TitleDiv>
                   <SekDiv>
                     <p style={{ margin: "0px", fontWeight: "12px" }}>SEK 625</p>

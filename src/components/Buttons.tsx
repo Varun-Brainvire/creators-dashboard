@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   ButtonContainer,
@@ -20,9 +20,8 @@ interface DateTypes {
 }
 
 const Buttons = () => {
-
   // let dummy ="";
-  const [dummy,setDummy]  = useState("")
+  const [dummy, setDummy] = useState("");
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -30,13 +29,45 @@ const Buttons = () => {
       key: "selection",
     },
   ]);
-
+  const [selectedValue, setSelectedValue] = useState("");
+  const [select, isSelect] = useState(false);
   const [startDate, setStartDate] = useState<any>(new Date());
   const [endDate, setEndDate] = useState<Date | any>(null);
+  const [defaultDate, setDefault] = useState<any>(null);
+
+  var innerNames;
+
+  // useEffect(() => {
+  //   const defaultSelected = () => {
+  //     debugger
+  //     const today = new Date();
+  //     const day = today.getDay();
+  //     const diff = today.getDate() - day + (day === 0 ? -6 : 1);
+  //     console.log(day);
+  //     const monday = new Date(today.setDate(diff));
+
+  //     // console.log(format(monday, "do LLL"), "do LLL");
+  //     // format(monday,"do LLL")
+
+  //     let formatMonthDate = format(monday, "do LLL");
+
+  //     const sunday = new Date(monday);
+  //     sunday.setDate(sunday.getDate() + 6);
+
+  //     let formatSundayDate = format(sunday, "do LLL");
+
+  //     setDummy(formatMonthDate + "-" + formatSundayDate);
+  //     console.log(dummy);
+  //     setStartDate(monday);
+  //     setDefault(sunday);
+  //   };
+  //   defaultSelected();
+  // },[]);
 
   const onDateChange = (dates: any) => {
+    debugger;
     const [start, end] = dates;
-    console.log(dates,"dates")
+    console.log(dates, "dates");
     setStartDate(start);
     setEndDate(end);
 
@@ -67,8 +98,8 @@ const Buttons = () => {
 
     let formatSundayDate = format(sunday, "do LLL");
 
-    setDummy(formatMonthDate +"-" + formatSundayDate) 
-    console.log(dummy) 
+    setDummy(formatMonthDate + "-" + formatSundayDate);
+    console.log(dummy);
     setStartDate(monday);
     setEndDate(sunday);
 
@@ -103,26 +134,56 @@ const Buttons = () => {
     console.log(lastDayOfMonth);
   };
 
+  const handleChange =  (value: string) => {
+    console.log(value);
+    innerNames = value;
+    handleYesterday() 
+    setSelectedValue(innerNames);
+    console.log(selectedValue,"isSelected");
+    console.log(innerNames === selectedValue)
+
+    isSelect(innerNames === selectedValue)
+  }
+
   return (
     <ButtonContainer>
-      <Button onClick={handleYesterday}>Yesterday</Button>
-      <Button onClick={handleLastWeek}>Last Week</Button>
+      <Button
+      $isSelected={select}
+        onClick={(e) => {
+          handleChange(e.target.innerText)
+        }}
+        
+        // isSelected
+        value="Yesterday"
+      >
+        Yesterday
+      </Button>
+      <Button
+        $isSelected={select}
+        onClick={(e) => {
+          handleChange(e.target.innerText)
+        }}
+        $isSelected={select}
+      >
+        Last Week
+      </Button>
       <Button onClick={handleLastMonth}>Last Month</Button>
       <Button onClick={handleThisWeekClick}>This Week</Button>
       <Wrapper>
-      <DatePickerInput
-        id="dynamic"
-        startDate={startDate}
-        endDate={endDate}
-        selected={startDate}
-        dateFormat="d MMM"
-        // inline
-        selectsRange
-        onChange={onDateChange}
-        value={startDate}
-        calendarClassName="rasta-stripes"
-        wrapperClassName="datePicker"
-      />
+        <DatePickerInput
+          id="dynamic"
+          startDate={startDate}
+          endDate={endDate}
+          selected={startDate}
+          dateFormat="d MMM"
+          // onLoad={defaultSelected}
+          // inline
+          selectsRange
+          onChange={onDateChange}
+          value={startDate}
+          calendarClassName="rasta-stripes"
+          wrapperClassName="datePicker"
+        />
       </Wrapper>
       {/* <DateRange
         editableDateInputs={true}

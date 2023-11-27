@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
+import Link from "next/link";
 
 type ColumnProps = {
   size?: number;
@@ -11,16 +12,22 @@ type ColumnProps = {
   flexDirection?: string;
   marginTop?: number;
   marginLeft?: number;
+  margin?:boolean;
+  height?:boolean
 };
 
-export const Button = styled.button`
+export const Button = styled.button<{$isSelected?: boolean}>`
   font-family: "Strawford", sans-serif;
   background-color: white;
   border-radius: 20px;
   margin: 8px;
   padding: 10px;
   white-space: nowrap;
+  font-size: 14px;
+  font-weight: bold;
   /* float: right; */
+  color: ${({ $isSelected }) => ($isSelected ? '#3A3A3A' : '#9D9D9D')};
+  border: ${({ $isSelected }) => ($isSelected ? '2px solid #3A3A3A' : '1px solid #9D9D9D')};
 `;
 
 export const Container = styled.div`
@@ -73,6 +80,8 @@ export const ButtonContainer = styled.div`
 export const DatePickerDiv = styled.div`
   float: right;
   border-radius: 10px;
+  border-color:#3A3A3A;
+  font-size: medium;
 `;
 
 export const DatePickerInput = styled(DatePicker)`
@@ -81,6 +90,9 @@ export const DatePickerInput = styled(DatePicker)`
   border-radius: 20px;
   margin: 8px;
   padding: 10px;
+  font-weight: 500;
+  border-color:#3A3A3A;
+  font-size: 14px;
 `;
 
 export const ProductComponentDiv = styled.div`
@@ -155,8 +167,9 @@ export const Column = styled.div<ColumnProps>`
   /* margin-left: ${({ marginLeft }) => marginLeft + `px`}; */
   /* border:1px solid black; */
   border-radius: 5px;
-  margin: 10px;
-  height: 57vh;
+  margin: ${({margin}) => margin ? "10px" : "0px 150px"};
+  height: ${({height}) => height ? "57vh" :"" };
+
   -webkit-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   -moz-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
@@ -188,6 +201,7 @@ export const OneCardComponent = styled.p`
   line-height: 26.5px;
   border-bottom: 0.8px solid #efefef;
   margin: 0px;
+  color: black;
 `;
 
 export const CardsComponentContainer = styled.div`
@@ -206,6 +220,8 @@ export const ProductContent = styled.div`
 `;
 
 export const TitleDiv = styled.div`
+  display: flex;
+  /* flex-direction: column; */
   p {
     font-size: 14px;
     overflow: hidden;
@@ -227,7 +243,8 @@ export const SekDiv = styled.div`
   }
 `;
 export const MainWrapper = styled.div`
-  max-height: 47.5vh;
+  /* max-height: 47.5vh; */
+  max-height: ${({height}) => height ? "":"47.5vh" };
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -239,3 +256,77 @@ export const MainWrapper = styled.div`
 export const TitleContainer = styled.div`
   border-color: #0668be;
 `;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
+
+export const OperationButtons = styled.button`
+  font-family: "Strawford", sans-serif;
+  background-color: white;
+  border-radius: 20px;
+  margin: 8px;
+  padding: 10px;
+  white-space: nowrap;
+`;
+
+export const OperationButtonsContainer = styled.div`
+  display: flex;
+  /* background-color: red; */
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 31px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 450px;
+  .rdrMonths {
+    .rdrStartEdge,
+    .rdrInRange {
+      background: red !important;
+    }
+  }
+  /* max-height: 47.5vh; */
+  /* overflow-x: scroll; */
+
+  @media (max-width: 576px) {
+    overflow-x: scroll;
+    justify-content: flex-start;
+    background-color: red;
+    /* border-radius: 0px; */
+  }
+
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+    justify-content: flex-start;
+    /* border-radius: 0px; */
+  }
+`;
+
+export const CombineButtonDiv = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 0px 150px;
+  justify-content: space-between;
+`;
+
+export const ProductNameDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* margin: 20px; */
+  justify-content: space-between;
+  padding: 21px;
+`;
+
+export const StickyTitle = styled.div`
+  position: sticky;
+  top: 0;
+  background-color: white;
+`
