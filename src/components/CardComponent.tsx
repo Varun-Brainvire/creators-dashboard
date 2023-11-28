@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import {
+  HeadingAndArrowDiv,
   MainWrapper,
   OneCardComponent,
+  PercentageDiv,
   ProductContent,
   ProductNameDiv,
   SekDiv,
@@ -12,7 +14,7 @@ import {
 import Image from "next/image";
 import image from "../../public/productimg/curvsoftcurvlong.svg";
 import PostImage from "../../public/postimg/twogirl.png";
-import Arrow from "../../public/reshot-icon-arrow-chevron-right-WDGHUKQ634.svg"
+import Arrow from "../../public/reshot-icon-arrow-chevron-right-WDGHUKQ634.svg";
 
 interface Product {
   id: number;
@@ -24,11 +26,11 @@ interface Product {
   cvrPercent: number;
 }
 
-interface Post{
+interface Post {
   id: number;
-  title:string;
-  price:number;
-  flag:string
+  title: string;
+  price: number;
+  flag: string;
 }
 
 const CardComponent = (props: Product | Post, title: string) => {
@@ -44,33 +46,30 @@ const CardComponent = (props: Product | Post, title: string) => {
 
   return (
     <>
-    <StickyTitle>
-      <StyledLink href={props.title.replace(/\s/g, "").toLowerCase()}>
-      <OneCardComponent>{props.title}</OneCardComponent>
-      </StyledLink>
-      {/* <svg>
-        <polygon points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707">
-        </polygon>
-      </svg> */}
-      {/* {Arrow} */}
-    </StickyTitle>
-      <MainWrapper height = {true}>
+      <StickyTitle>
+        <StyledLink href={props.title.replace(/\s/g, "").toLowerCase()}>
+          <HeadingAndArrowDiv>
+            <OneCardComponent>{props.title}</OneCardComponent>
+            <Image src={Arrow} alt="arrow" />
+          </HeadingAndArrowDiv>
+        </StyledLink>
+      </StickyTitle>
+      <MainWrapper>
         {props.productData.map((details) => {
           if (details.flag === "product") {
             return (
               <>
-                <ProductContent>
+                <ProductContent className="topProducts">
+                  <Image src={image} height={50} width={50} alt="hi" />
                   <TitleDiv>
-                  <Image src={image} height={80} width={80} alt="hi" />
-                  <ProductNameDiv>
-                    <p style={{ margin: "0px", fontWeight: "2px" }}>
-                      {details.name}
-                    </p>
-                    <span>{details.percent + "%" + " " + details.type} </span>
-                  </ProductNameDiv>
+                    <p>{details.name}</p>
+                    <ProductNameDiv>
+                      <PercentageDiv>{details.percent + "%"}</PercentageDiv>
+                      <span>{details.type}</span>
+                    </ProductNameDiv>
                   </TitleDiv>
                   <SekDiv>
-                    <p style={{ margin: "0px", fontWeight: "12px" }}>SEK 625</p>
+                    <p>SEK 625</p>
                     <span style={{ fontWeight: "10px" }}>
                       CVR {details.cvrPercent + "%"}{" "}
                     </span>
@@ -82,18 +81,14 @@ const CardComponent = (props: Product | Post, title: string) => {
           if (details.flag === "post") {
             return (
               <>
-                <ProductContent>
-                  <Image src={PostImage} height={50} width={50} alt="post" />
+                <ProductContent className="topPosts">
+                  <Image src={PostImage} height={40} width={40} alt="post" />
                   <TitleDiv>
-                    <p>
-                      {details.title}
-                    </p>
+                    <p>{details.title}</p>
                     {/* <span>{details.price}</span> */}
                   </TitleDiv>
                   <SekDiv>
-                    <p>
-                      {details.price}
-                    </p>
+                    <p>{details.price}</p>
                     {/* <span style={{ fontWeight: "10px" }}>
                       CVR {details.cvrPercent + "%"}{" "}
                     </span> */}
@@ -106,7 +101,7 @@ const CardComponent = (props: Product | Post, title: string) => {
           if (details.flag === "stores") {
             return (
               <>
-                <ProductContent>
+                <ProductContent className="topStores">
                   {/* <Image src={PostImage} height={50} width={50} alt="post" /> */}
                   <TitleDiv>
                     <p>{details.storeName}</p>

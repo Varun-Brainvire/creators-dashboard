@@ -12,22 +12,26 @@ type ColumnProps = {
   flexDirection?: string;
   marginTop?: number;
   marginLeft?: number;
-  margin?:boolean;
-  height?:boolean
+  margin?: boolean;
+  height?: boolean;
 };
 
-export const Button = styled.button<{$isSelected?: boolean}>`
+export const Button = styled.button<{ $isSelected?: boolean }>`
   font-family: "Strawford", sans-serif;
   background-color: white;
   border-radius: 20px;
   margin: 8px;
-  padding: 10px;
+  padding: 0px 14px;
+  height: 39px;
   white-space: nowrap;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
+  font-style: normal;
+  line-height: normal;
   /* float: right; */
-  color: ${({ $isSelected }) => ($isSelected ? '#3A3A3A' : '#9D9D9D')};
-  border: ${({ $isSelected }) => ($isSelected ? '2px solid #3A3A3A' : '1px solid #9D9D9D')};
+  color: ${({ $isSelected }) => ($isSelected ? "#3A3A3A" : "#9D9D9D")};
+  border: ${({ $isSelected }) =>
+    $isSelected ? "2px solid #3A3A3A" : "1px solid #9D9D9D"};
 `;
 
 export const Container = styled.div`
@@ -35,11 +39,11 @@ export const Container = styled.div`
   flex-direction: column;
   /* border: 1px solid red; */
   justify-content: center;
-  margin: auto;
+  margin: 0 13%;
   /* height: 122vh; */
   /* align-items: center; */
   /* width: 70%; */
-  max-width: 1440px;
+  /* max-width: 1440px; */
 `;
 
 export const ButtonContainer = styled.div`
@@ -80,7 +84,7 @@ export const ButtonContainer = styled.div`
 export const DatePickerDiv = styled.div`
   float: right;
   border-radius: 10px;
-  border-color:#3A3A3A;
+  border-color: #3a3a3a;
   font-size: medium;
 `;
 
@@ -91,7 +95,7 @@ export const DatePickerInput = styled(DatePicker)`
   margin: 8px;
   padding: 10px;
   font-weight: 500;
-  border-color:#3A3A3A;
+  border-color: #3a3a3a;
   font-size: 14px;
 `;
 
@@ -167,9 +171,9 @@ export const Column = styled.div<ColumnProps>`
   /* margin-left: ${({ marginLeft }) => marginLeft + `px`}; */
   /* border:1px solid black; */
   border-radius: 5px;
-  margin: ${({margin}) => margin ? "10px" : "0px 150px"};
-  height: ${({height}) => height ? "57vh" :"" };
-
+  margin-left: ${({ margin }) => (margin ? "224px" : "0px 150px")};
+  height: ${({ height }) => (height ? "57vh" : "")};
+  min-width: 33%;
   -webkit-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   -moz-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
@@ -177,11 +181,15 @@ export const Column = styled.div<ColumnProps>`
   @media (max-width: 576px) {
     flex: ${({ sizeSm }) => sizeSm};
     border-radius: 0px;
+    margin-top: ${({ marginTop }) => marginTop + `%`};
+    margin-left: ${({ marginLeft }) => marginLeft};
   }
 
   @media (max-width: 768px) {
     flex: ${({ sizeMd }) => sizeMd};
     border-radius: 0px;
+    margin-top: ${({ marginTop }) => marginTop + `%`};
+    margin-left: ${({ marginLeft }) => marginLeft};
   }
 
   @media (max-width: 992px) {
@@ -214,29 +222,50 @@ export const CardsComponentContainer = styled.div`
 export const ProductContent = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content: space-evenly;
+
   border-bottom: 1px solid #efefef;
+
+  &.topProducts {
+    padding: 10px 20px 10px 20px;
+    /* justify-content: space-evenly; */
+  }
+
+  &.topPosts {
+    padding: 15px 20px 15px 20px;
+  }
+
+  &.topStores {
+    padding: 25px 24px 25px 24px;
+  }
 `;
 
 export const TitleDiv = styled.div`
   display: flex;
+  width: 50%;
+
+  flex-direction: column;
   /* flex-direction: column; */
   p {
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin: 0px;
   }
   span {
     font-size: 12px;
-    background-color: #f4f0ec;
   }
 `;
 
 export const SekDiv = styled.div`
   p {
     font-size: 15px;
+    margin: 0;
+    line-height: normal;
+    font-style: normal;
+    font-weight: 500;
+    color: #000;
   }
   span {
     font-size: 10px;
@@ -244,7 +273,7 @@ export const SekDiv = styled.div`
 `;
 export const MainWrapper = styled.div`
   /* max-height: 47.5vh; */
-  max-height: ${({height}) => height ? "":"47.5vh" };
+  max-height: ${({ height }) => (height ? "" : "47.5vh")};
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -319,14 +348,43 @@ export const CombineButtonDiv = styled.div`
 
 export const ProductNameDiv = styled.div`
   display: flex;
-  flex-direction: column;
-  /* margin: 20px; */
-  justify-content: space-between;
-  padding: 21px;
+  align-items: center;
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  span {
+    margin-left: 5px;
+  }
 `;
 
 export const StickyTitle = styled.div`
   position: sticky;
   top: 0;
   background-color: white;
-`
+`;
+
+export const PercentageDiv = styled.div`
+  background-color: rgba(244, 240, 236, 1);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #3a3a3a;
+  padding: 0.3rem 0;
+  white-space: nowrap;
+`;
+
+export const HeadingAndArrowDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px 0px 0px;
+`;
+
+export const ProductDetailPageArrowDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;

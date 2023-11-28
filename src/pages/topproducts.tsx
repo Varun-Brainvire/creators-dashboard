@@ -6,6 +6,8 @@ import {
   DatePickerInput,
   OperationButtons,
   OperationButtonsContainer,
+  ProductDetailPageArrowDiv,
+  StyledLink,
   Wrapper,
 } from "@/components/styles/button.styles";
 import { useState } from "react";
@@ -18,24 +20,29 @@ import format from "date-fns/format";
 import Buttons from "@/components/Buttons";
 import CardComponent from "@/components/CardComponent";
 import TopProductData from "../../TopProductData.json";
-import svg from "../../public/reshot-icon-arrow-chevron-right-WDGHUKQ634.svg";
+import svg from "../../public/left-arrow-svgrepo-com.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 function Topproducts() {
   return (
     <>
       <CombineButtonDiv>
         <Buttons />
-        <Image src={svg} alt="arrow svg" height={20} width={20} />
-        <OperationButtonsContainer>
-          <OperationButtons>Top Products</OperationButtons>
-          <OperationButtons>Top Post</OperationButtons>
-          <OperationButtons>Top Stores</OperationButtons>
-        </OperationButtonsContainer>
+        <ProductDetailPageArrowDiv>
+          <StyledLink href="/">
+            <Image src={svg} alt="arrow svg" height={20} width={20} />
+          </StyledLink>
+          <OperationButtonsContainer>
+            <OperationButtons>Top Products</OperationButtons>
+            <OperationButtons>Top Post</OperationButtons>
+            <OperationButtons>Top Stores</OperationButtons>
+          </OperationButtonsContainer>
+        </ProductDetailPageArrowDiv>
       </CombineButtonDiv>
 
       <Column
-        margin={false}
+        margin={true}
         flex={"flex"}
         flexDirection={"column"}
         size={4}

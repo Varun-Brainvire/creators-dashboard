@@ -24,7 +24,6 @@ const ProductComponent = () => {
           sizeMd={12}
           sizeLg={12}
           sizeSm={12}
-          margin={true}
           height={true}
         >
           <CardComponent productData={TopProductData} title="Top Products" />
@@ -37,7 +36,8 @@ const ProductComponent = () => {
           sizeLg={12}
           sizeSm={12}
           height={true}
-
+marginTop={4}
+marginLeft={0}
           margin={true}
         >
           <CardComponent productData={TopPost} title="Top Posts" />
@@ -50,8 +50,9 @@ const ProductComponent = () => {
           sizeLg={12}
           sizeSm={12}
           height={true}
-
+          marginTop={4}
           margin={true}
+          marginLeft={0}
         >
           <CardComponent productData={TopStores} title="Top Stores" />
         </Column>

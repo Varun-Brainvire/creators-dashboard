@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Product 1",
+    "name": "Nioxin Thickening Gel 140ml",
     "flag":"product",
     "image": "../product-images/skarmavild.svg",
     "price": 974,
@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "name": "Product 2",
+    "name": "Nioxin Thickening Gel 140ml",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 389,
     "flag":"product",
@@ -21,7 +21,7 @@
   },
   {
     "id": 3,
-    "name": "Product 3",
+    "name": "Nioxin Thickening Gel 140ml",
     "image": "../product-images/ghd-curve-soft-curl-tong-1121-121-0000_1.jpg.svg",
     "price": 996,
     "flag":"product",
@@ -31,7 +31,7 @@
   },
   {
     "id": 4,
-    "name": "Product 4",
+    "name": "Nioxin Thickening Gel 140ml",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 259,
     "flag":"product",
@@ -41,7 +41,7 @@
   },
   {
     "id": 5,
-    "name": "Product 5",
+    "name": "Nioxin Thickening Gel 140ml",
     "image": "../product-images/skarmavild.svg",
     "price": 617,
     "flag":"product",
@@ -51,7 +51,7 @@
   },
   {
     "id": 6,
-    "name": "Product 6",
+    "name": "Nioxin Thickening Gel 140ml",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 273,
     "type": "Lyco",
@@ -61,7 +61,7 @@
   },
   {
     "id": 7,
-    "name": "Product 7",
+    "name": "Nioxin Thickening Gel 140ml",
     "image": "../product-images/ghd-curve-soft-curl-tong-1121-121-0000_1.jpg.svg",
     "price": 493,
     "type": "Pricerunner",
@@ -71,7 +71,7 @@
   },
   {
     "id": 8,
-    "name": "Product 8",
+    "name": "Nioxin Thickening Gel 140ml",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 647,
     "type": "Lyco",
@@ -81,7 +81,7 @@
   },
   {
     "id": 9,
-    "name": "Product 9",
+    "name": "Nioxin Thickening Gel 140ml",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 791,
     "type": "Pricerunner",
@@ -91,7 +91,7 @@
   },
   {
     "id": 10,
-    "name": "Product 10",
+    "name": "Nioxin Thickening Gel 140ml0",
     "image": "../product-images/skarmavild.svg",
     "price": 15,
     "type": "Lyco",
@@ -101,7 +101,7 @@
   },
   {
     "id": 11,
-    "name": "Product 11",
+    "name": "Nioxin Thickening Gel 140ml1",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 11,
     "type": "Pricerunner",
@@ -111,7 +111,7 @@
   },
   {
     "id": 12,
-    "name": "Product 12",
+    "name": "Nioxin Thickening Gel 140ml2",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 439,
     "type": "Lyco",
@@ -121,7 +121,7 @@
   },
   {
     "id": 13,
-    "name": "Product 13",
+    "name": "Nioxin Thickening Gel 140ml3",
     "image": "../product-images/ghd-curve-soft-curl-tong-1121-121-0000_1.jpg.svg",
     "price": 791,
     "type": "Pricerunner",
@@ -131,7 +131,7 @@
   },
   {
     "id": 14,
-    "name": "Product 14",
+    "name": "Nioxin Thickening Gel 140ml4",
     "image": "../product-images/skarmavild.svg",
     "price": 301,
     "type": "Lyco",
@@ -141,7 +141,7 @@
   },
   {
     "id": 15,
-    "name": "Product 15",
+    "name": "Nioxin Thickening Gel 140ml5",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 995,
     "type": "Pricerunner",
@@ -151,7 +151,7 @@
   },
   {
     "id": 16,
-    "name": "Product 16",
+    "name": "Nioxin Thickening Gel 140ml6",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 633,
     "type": "Lyco",
@@ -161,7 +161,7 @@
   },
   {
     "id": 17,
-    "name": "Product 17",
+    "name": "Nioxin Thickening Gel 140ml7",
     "image": "../product-images/ghd-curve-soft-curl-tong-1121-121-0000_1.jpg.svg",
     "price": 872,
     "type": "Pricerunner",
@@ -171,7 +171,7 @@
   },
   {
     "id": 18,
-    "name": "Product 18",
+    "name": "Nioxin Thickening Gel 140ml8",
     "image": "../product-images/deodoc-paris-to-persia-intimtval-100ml-1643-107-0100_1.png.svg",
     "price": 488,
     "type": "Lyco",
@@ -181,7 +181,7 @@
   },
   {
     "id": 19,
-    "name": "Product 19",
+    "name": "Nioxin Thickening Gel 140ml9",
     "image": "../product-images/skarmavild.svg",
     "price": 497,
     "type": "Pricerunner",
@@ -191,7 +191,7 @@
   },
   {
     "id": 20,
-    "name": "Product 20",
+    "name": "Nioxin Thickening Gel 140ml0",
     "image": "../product-images/prada-persona-eau-de-parfum-50-ml-1251-345-0050_1.jpg.svg",
     "price": 608,
     "type": "Lyco",
