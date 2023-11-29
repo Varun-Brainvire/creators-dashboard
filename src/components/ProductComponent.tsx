@@ -18,6 +18,7 @@ const ProductComponent = () => {
       {/* <ContentDiv /> */}
       <Columns>
         <Column
+          marginTop={4}
           flex={"flex"}
           flexDirection={"column"}
           size={4}
@@ -25,6 +26,7 @@ const ProductComponent = () => {
           sizeLg={12}
           sizeSm={12}
           height={true}
+          margin={true}
         >
           <CardComponent productData={TopProductData} title="Top Products" />
         </Column>
@@ -36,8 +38,8 @@ const ProductComponent = () => {
           sizeLg={12}
           sizeSm={12}
           height={true}
-marginTop={4}
-marginLeft={0}
+          marginTop={4}
+          marginLeft={0}
           margin={true}
         >
           <CardComponent productData={TopPost} title="Top Posts" />

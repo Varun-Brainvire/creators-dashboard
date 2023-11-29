@@ -19,7 +19,7 @@ interface DateTypes {
   end: string;
 }
 
-const Buttons = () => {
+const Buttons = (props:{applyGap: boolean}) => {
   // let dummy ="";
   const [dummy, setDummy] = useState("");
   const [state, setState] = useState([
@@ -146,8 +146,8 @@ const Buttons = () => {
   }
 
   return (
-    <ButtonContainer>
-      <Button
+    <ButtonContainer applyGap = {props.applyGap}>
+      <Button 
       $isSelected={select}
         onClick={(e) => {
           handleChange(e.target.innerText)

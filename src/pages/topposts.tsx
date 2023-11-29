@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Button,
   ButtonContainer,
@@ -20,12 +21,11 @@ import "react-date-range/dist/theme/default.css";
 import format from "date-fns/format";
 import Buttons from "@/components/Buttons";
 import CardComponent from "@/components/CardComponent";
-import TopProductData from "../../TopProductData.json";
+import TopPostData from "../../TopPostData.json";
 import svg from "../../public/left-arrow-svgrepo-com.svg";
 import Image from "next/image";
-import Link from "next/link";
 
-function Topproducts() {
+const Topposts = () => {
   return (
     <>
       <TopProductDiv>
@@ -55,14 +55,14 @@ function Topproducts() {
           height={false}
         >
           <CardComponent
-            productData={TopProductData}
-            title="Top Products"
+            productData={TopPostData}
+            title="Top Post"
             height={true}
           />
         </Column>
       </TopProductDiv>
     </>
   );
-}
+};
 
-export default Topproducts;
+export default Topposts;

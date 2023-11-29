@@ -16,7 +16,7 @@ export default function Home() {
     <Container>
       {/* <h1>Hello</h1> */}
       {/* <h1>Text for testing fonts</h1> */}
-      <Buttons />
+      <Buttons applyGap={true} />
       <ChartDiv>
       {/* <Chart /> */}
       </ChartDiv>

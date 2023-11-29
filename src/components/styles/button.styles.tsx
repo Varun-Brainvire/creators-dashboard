@@ -39,11 +39,32 @@ export const Container = styled.div`
   flex-direction: column;
   /* border: 1px solid red; */
   justify-content: center;
-  margin: 0 13%;
+  max-width: 1320px;
+  margin: auto;
+  /* margin: 0 13%; */
   /* height: 122vh; */
   /* align-items: center; */
   /* width: 70%; */
   /* max-width: 1440px; */
+  @media only screen and (max-width: 1400px) {
+    max-width: 1200px;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    max-width: 1000px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    max-width: 770px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    max-width: 500px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    max-width: 90%;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -51,7 +72,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 31px;
+  margin-bottom: ${({ applyGap }) => (applyGap ? "31px" : "0px")};
   flex-wrap: nowrap;
   overflow-x: auto;
   .rdrMonths {
@@ -168,12 +189,14 @@ export const Column = styled.div<ColumnProps>`
   flex: ${({ size }) => size};
   flex-direction: ${({ flexDirection }) => flexDirection};
   margin-top: ${({ marginTop }) => marginTop + `px`};
+  margin: ${({ margin }) =>
+    margin ? "4px 10px 10px 10px" : "0px 100px 0px 100px"};
   /* margin-left: ${({ marginLeft }) => marginLeft + `px`}; */
   /* border:1px solid black; */
   border-radius: 5px;
-  margin-left: ${({ margin }) => (margin ? "224px" : "0px 150px")};
+  margin-left: ${({ margin }) => (margin ? "10px" : "0px 150px")};
   height: ${({ height }) => (height ? "57vh" : "")};
-  min-width: 33%;
+  /* min-width: 33%; */
   -webkit-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   -moz-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
@@ -222,31 +245,40 @@ export const CardsComponentContainer = styled.div`
 export const ProductContent = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   border-bottom: 1px solid #efefef;
 
   &.topProducts {
     padding: 10px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     /* justify-content: space-evenly; */
   }
 
   &.topPosts {
     padding: 15px 20px 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &.topStores {
     padding: 25px 24px 25px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 `;
 
 export const TitleDiv = styled.div`
   display: flex;
-  width: 50%;
-
+  width: ${({ width }) => (width ? "60%" : "")};
   flex-direction: column;
   /* flex-direction: column; */
   p {
+    /* text-overflow: ellipsis; */
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -259,8 +291,10 @@ export const TitleDiv = styled.div`
 `;
 
 export const SekDiv = styled.div`
+width:25%;
+text-align: right;
   p {
-    font-size: 15px;
+    font-size: 14px;
     margin: 0;
     line-height: normal;
     font-style: normal;
@@ -310,12 +344,12 @@ export const OperationButtons = styled.button`
 export const OperationButtonsContainer = styled.div`
   display: flex;
   /* background-color: red; */
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   align-items: center;
-  margin-bottom: 31px;
+  /* margin-bottom: 31px; */
   flex-wrap: nowrap;
   overflow-x: auto;
-  width: 450px;
+  /* width: 450px; */
   .rdrMonths {
     .rdrStartEdge,
     .rdrInRange {
@@ -386,5 +420,33 @@ export const HeadingAndArrowDiv = styled.div`
 export const ProductDetailPageArrowDiv = styled.div`
   display: flex;
   align-items: center;
+  gap: 60px;
   justify-content: space-between;
+`;
+
+export const ImageAndTitleDiv = styled.div`
+width: 15%;
+  display: ${({ forProductDetails }) => (forProductDetails ? "flex" : "block")};
+  align-items: center;
+  /* justify-content: space-between; */
+  gap: ${({ applyGap }) => (applyGap ? "16px" : "10px")};
+  padding:  ${({ paddingapply }) => (paddingapply ? "10px 32px" : "0px")};
+`;
+
+export const CommonDivCard = styled.div`
+  display: flex;
+  align-items: center;
+      height: 50px;
+  justify-content: space-between;
+  gap:16px;
+  padding: 10px 32px;
+  border-bottom: 1px solid #dddddd;
+
+`
+
+export const TopProductDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0px 32px;
 `;

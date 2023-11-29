@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {
+  CommonDivCard,
   HeadingAndArrowDiv,
+  ImageAndTitleDiv,
   MainWrapper,
   OneCardComponent,
   PercentageDiv,
@@ -15,6 +17,7 @@ import Image from "next/image";
 import image from "../../public/productimg/curvsoftcurvlong.svg";
 import PostImage from "../../public/postimg/twogirl.png";
 import Arrow from "../../public/reshot-icon-arrow-chevron-right-WDGHUKQ634.svg";
+import { useRouter } from "next/router";
 
 interface Product {
   id: number;
@@ -40,9 +43,11 @@ const CardComponent = (props: Product | Post, title: string) => {
 
   props.productData.map((items: any) => {
     console.log(items, "items");
-
     // setData(items.flag)
   });
+
+  const router = useRouter();
+  console.log(router, "ROUTER");
 
   return (
     <>
@@ -50,58 +55,60 @@ const CardComponent = (props: Product | Post, title: string) => {
         <StyledLink href={props.title.replace(/\s/g, "").toLowerCase()}>
           <HeadingAndArrowDiv>
             <OneCardComponent>{props.title}</OneCardComponent>
-            <Image src={Arrow} alt="arrow" />
+            {router.route == "/" ? <Image src={Arrow} alt="arrow" /> : ""}
           </HeadingAndArrowDiv>
         </StyledLink>
       </StickyTitle>
-      <MainWrapper>
+      <MainWrapper height={props.height}>
         {props.productData.map((details) => {
           if (details.flag === "product") {
             return (
               <>
-                <ProductContent className="topProducts">
-                  <Image src={image} height={50} width={50} alt="hi" />
-                  <TitleDiv>
-                    <p>{details.name}</p>
-                    <ProductNameDiv>
-                      <PercentageDiv>{details.percent + "%"}</PercentageDiv>
-                      <span>{details.type}</span>
-                    </ProductNameDiv>
-                  </TitleDiv>
+                <CommonDivCard>
+                  <ImageAndTitleDiv forProductDetails={true}>
+                    <Image src={image} height={50} width={50} alt="hi" />
+                    <TitleDiv forDashBoard={true} width={false}>
+                      <p>{details.name}</p>
+                      <ProductNameDiv>
+                        <PercentageDiv>{details.percent + "%"}</PercentageDiv>
+                        <span>{details.type}</span>
+                      </ProductNameDiv>
+                    </TitleDiv>
+                  </ImageAndTitleDiv>
                   <SekDiv>
                     <p>SEK 625</p>
                     <span style={{ fontWeight: "10px" }}>
                       CVR {details.cvrPercent + "%"}{" "}
                     </span>
                   </SekDiv>
-                </ProductContent>
+                </CommonDivCard>
               </>
             );
           }
           if (details.flag === "post") {
             return (
-              <>
-                <ProductContent className="topPosts">
+              <CommonDivCard>
+                <ImageAndTitleDiv className="topPosts" forProductDetails={true}>
                   <Image src={PostImage} height={40} width={40} alt="post" />
-                  <TitleDiv>
-                    <p>{details.title}</p>
-                    {/* <span>{details.price}</span> */}
-                  </TitleDiv>
-                  <SekDiv>
-                    <p>{details.price}</p>
-                    {/* <span style={{ fontWeight: "10px" }}>
+                </ImageAndTitleDiv>
+                <TitleDiv forDashBoard={true} width={true}>
+                  <p>{details.title}</p>
+                  {/* <span>{details.price}</span> */}
+                </TitleDiv>
+                <SekDiv>
+                  <p>{details.price}</p>
+                  {/* <span style={{ fontWeight: "10px" }}>
                       CVR {details.cvrPercent + "%"}{" "}
                     </span> */}
-                  </SekDiv>
-                </ProductContent>
-              </>
+                </SekDiv>
+              </CommonDivCard>
             );
           }
 
           if (details.flag === "stores") {
             return (
               <>
-                <ProductContent className="topStores">
+                <CommonDivCard>
                   {/* <Image src={PostImage} height={50} width={50} alt="post" /> */}
                   <TitleDiv>
                     <p>{details.storeName}</p>
@@ -115,7 +122,7 @@ const CardComponent = (props: Product | Post, title: string) => {
                       CVR {details.cvrPercent + "%"}{" "}
                     </span> */}
                   </SekDiv>
-                </ProductContent>
+                </CommonDivCard>
               </>
             );
           }
