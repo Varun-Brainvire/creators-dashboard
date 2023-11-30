@@ -74,32 +74,35 @@ export const ButtonContainer = styled.div`
   align-items: center;
   margin-bottom: ${({ applyGap }) => (applyGap ? "31px" : "0px")};
   flex-wrap: nowrap;
-  overflow-x: auto;
   .rdrMonths {
     .rdrStartEdge,
     .rdrInRange {
       background: red !important;
     }
   }
-  /* max-height: 47.5vh; */
-  /* overflow-x: scroll; */
 
-  &::-webkit-scrollbar {
-    /* width: 1px; */
-    background: #f1f1f1;
+  overflow-x: ${({scroll}) => (scroll ? "":"auto")};
+  
+  @media (max-width: 992px) {
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      /* width: 1px; */
+      background: #f1f1f1;
+    }
   }
 
-  @media (max-width: 576px) {
+  /* @media (max-width: 576px) {
     overflow-x: scroll;
     justify-content: flex-start;
     /* border-radius: 0px; */
-  }
+  /* } */
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     overflow-x: scroll;
     justify-content: flex-start;
-    /* border-radius: 0px; */
-  }
+    /* border-radius: 0px; 
+  }*/ 
 `;
 
 export const DatePickerDiv = styled.div`
@@ -189,8 +192,7 @@ export const Column = styled.div<ColumnProps>`
   flex: ${({ size }) => size};
   flex-direction: ${({ flexDirection }) => flexDirection};
   margin-top: ${({ marginTop }) => marginTop + `px`};
-  margin: ${({ margin }) =>
-    margin ? "4px 10px 10px 10px" : "0px 100px 0px 100px"};
+
   /* margin-left: ${({ marginLeft }) => marginLeft + `px`}; */
   /* border:1px solid black; */
   border-radius: 5px;
@@ -223,6 +225,11 @@ export const Column = styled.div<ColumnProps>`
   @media (max-width: 1200px) {
     flex: ${({ sizeXl }) => sizeXl};
     border-radius: 0px;
+  }
+
+  @media (min-width: 992px) {
+    margin: ${({ margin }) =>
+      margin ? "4px 10px 10px 10px" : "0px 100px 0px 100px"};
   }
 `;
 
@@ -274,11 +281,9 @@ export const ProductContent = styled.div`
 
 export const TitleDiv = styled.div`
   display: flex;
-  width: ${({ width }) => (width ? "60%" : "")};
+  width: ${({ width }) => (width ? "60%" : "66%")};
   flex-direction: column;
-  /* flex-direction: column; */
   p {
-    /* text-overflow: ellipsis; */
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -288,21 +293,62 @@ export const TitleDiv = styled.div`
   span {
     font-size: 12px;
   }
+  @media (max-width: 992px) {
+    width: 33%;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 576px) {
+    width: 33%;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    width: 33%;
+    font-size: 15px;
+    font-weight: 500;
+  }
 `;
 
 export const SekDiv = styled.div`
-width:25%;
-text-align: right;
+  width: 25%;
+  text-align: right;
   p {
     font-size: 14px;
     margin: 0;
-    line-height: normal;
     font-style: normal;
     font-weight: 500;
     color: #000;
+    line-height: 21px;
   }
   span {
-    font-size: 10px;
+    /* font-size: 10px;
+     */
+    font-family: Strawford;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  @media (min-width: 992px) {
+    /* width: 33%; */
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 576px) {
+    /* width: 33%; */
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    /* width: 33%; */
+    font-size: 15px;
+    font-weight: 500;
   }
 `;
 export const MainWrapper = styled.div`
@@ -333,12 +379,26 @@ export const StyledLink = styled(Link)`
 `;
 
 export const OperationButtons = styled.button`
-  font-family: "Strawford", sans-serif;
+  /* font-family: "Strawford", sans-serif;
   background-color: white;
   border-radius: 20px;
   margin: 8px;
   padding: 10px;
+  white-space: nowrap; */
+
+  font-family: "Strawford", sans-serif;
+  background-color: white;
+  border-radius: 20px;
+  margin: 8px;
+  padding: 0px 14px;
+  height: 39px;
   white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: normal;
+  color: #9d9d9d;
+  border: 1px solid #9d9d9d;
 `;
 
 export const OperationButtonsContainer = styled.div`
@@ -353,7 +413,7 @@ export const OperationButtonsContainer = styled.div`
   .rdrMonths {
     .rdrStartEdge,
     .rdrInRange {
-      background: red !important;
+      /* background: red !important; */
     }
   }
   /* max-height: 47.5vh; */
@@ -362,7 +422,7 @@ export const OperationButtonsContainer = styled.div`
   @media (max-width: 576px) {
     overflow-x: scroll;
     justify-content: flex-start;
-    background-color: red;
+    /* background-color: red; */
     /* border-radius: 0px; */
   }
 
@@ -378,6 +438,31 @@ export const CombineButtonDiv = styled.div`
   flex-direction: row-reverse;
   padding: 0px 150px;
   justify-content: space-between;
+  overflow-x: auto;
+
+  @media (max-width: 768px) {
+    overflow-x: auto;
+    margin-bottom: 15px;
+    border: 1px solid blue;
+
+    &::-webkit-scrollbar {
+      height: 5px;
+      border-radius: 5px;
+      background-color: lightgray;
+    }
+  }
+
+  @media (max-width: 576px) {
+    overflow-x: auto;
+    margin-bottom: 15px;
+    border: 1px solid blue;
+
+    &::-webkit-scrollbar {
+      height: 5px;
+      border-radius: 5px;
+      background-color: lightgray;
+    }
+  }
 `;
 
 export const ProductNameDiv = styled.div`
@@ -425,24 +510,23 @@ export const ProductDetailPageArrowDiv = styled.div`
 `;
 
 export const ImageAndTitleDiv = styled.div`
-width: 15%;
+  width: ${({ width }) => (width ? "0%" : "15%")};
   display: ${({ forProductDetails }) => (forProductDetails ? "flex" : "block")};
   align-items: center;
   /* justify-content: space-between; */
   gap: ${({ applyGap }) => (applyGap ? "16px" : "10px")};
-  padding:  ${({ paddingapply }) => (paddingapply ? "10px 32px" : "0px")};
+  padding: ${({ paddingapply }) => (paddingapply ? "10px 32px" : "0px")};
 `;
 
 export const CommonDivCard = styled.div`
   display: flex;
   align-items: center;
-      height: 50px;
+  height: 50px;
   justify-content: space-between;
-  gap:16px;
+  gap: 16px;
   padding: 10px 32px;
   border-bottom: 1px solid #dddddd;
-
-`
+`;
 
 export const TopProductDiv = styled.div`
   display: flex;

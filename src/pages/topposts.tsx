@@ -36,9 +36,15 @@ const Topposts = () => {
               <Image src={svg} alt="arrow svg" height={20} width={20} />
             </StyledLink>
             <OperationButtonsContainer>
+            <StyledLink href="/topproducts">
               <OperationButtons>Top Products</OperationButtons>
+            </StyledLink>
+            <StyledLink href="/topposts">
               <OperationButtons>Top Post</OperationButtons>
+            </StyledLink>
+            <StyledLink href="/topstores">
               <OperationButtons>Top Stores</OperationButtons>
+            </StyledLink>
             </OperationButtonsContainer>
           </ProductDetailPageArrowDiv>
         </CombineButtonDiv>

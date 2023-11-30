@@ -67,7 +67,7 @@ const CardComponent = (props: Product | Post, title: string) => {
                 <CommonDivCard>
                   <ImageAndTitleDiv forProductDetails={true}>
                     <Image src={image} height={50} width={50} alt="hi" />
-                    <TitleDiv forDashBoard={true} width={false}>
+                    <TitleDiv forDashBoard={true}>
                       <p>{details.name}</p>
                       <ProductNameDiv>
                         <PercentageDiv>{details.percent + "%"}</PercentageDiv>
@@ -88,18 +88,34 @@ const CardComponent = (props: Product | Post, title: string) => {
           if (details.flag === "post") {
             return (
               <CommonDivCard>
-                <ImageAndTitleDiv className="topPosts" forProductDetails={true}>
-                  <Image src={PostImage} height={40} width={40} alt="post" />
-                </ImageAndTitleDiv>
-                <TitleDiv forDashBoard={true} width={true}>
-                  <p>{details.title}</p>
-                  {/* <span>{details.price}</span> */}
-                </TitleDiv>
+                {router.route == "/topposts" ? (
+                  <ImageAndTitleDiv
+                    className="topPosts"
+                    forProductDetails={true}
+                    width={true}
+                  >
+                    <Image src={PostImage} height={40} width={40} alt="post" />
+                  </ImageAndTitleDiv>
+                ) : (
+                  <ImageAndTitleDiv
+                    className="topPosts"
+                    forProductDetails={true}
+                  >
+                    <Image src={PostImage} height={40} width={40} alt="post" />
+                  </ImageAndTitleDiv>
+                )}
+                {router.route == "/topposts" ? (
+                  <TitleDiv forDashBoard={true} width={false}>
+                    <p>{details.title}</p>
+                  </TitleDiv>
+                ) : (
+                  <TitleDiv forDashBoard={true} width={true}>
+                    <p>{details.title}</p>
+                  </TitleDiv>
+                )}
+
                 <SekDiv>
                   <p>{details.price}</p>
-                  {/* <span style={{ fontWeight: "10px" }}>
-                      CVR {details.cvrPercent + "%"}{" "}
-                    </span> */}
                 </SekDiv>
               </CommonDivCard>
             );
@@ -109,18 +125,13 @@ const CardComponent = (props: Product | Post, title: string) => {
             return (
               <>
                 <CommonDivCard>
-                  {/* <Image src={PostImage} height={50} width={50} alt="post" /> */}
                   <TitleDiv>
                     <p>{details.storeName}</p>
-                    {/* <span>{details.price}</span> */}
                   </TitleDiv>
                   <SekDiv>
                     <p style={{ margin: "0px", fontWeight: "12px" }}>
                       {details.price}
                     </p>
-                    {/* <span style={{ fontWeight: "10px" }}>
-                      CVR {details.cvrPercent + "%"}{" "}
-                    </span> */}
                   </SekDiv>
                 </CommonDivCard>
               </>

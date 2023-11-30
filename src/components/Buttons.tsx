@@ -13,6 +13,7 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import format from "date-fns/format";
+import { useRouter } from "next/router";
 
 interface DateTypes {
   start: string;
@@ -34,6 +35,7 @@ const Buttons = (props:{applyGap: boolean}) => {
   const [startDate, setStartDate] = useState<any>(new Date());
   const [endDate, setEndDate] = useState<Date | any>(null);
   const [defaultDate, setDefault] = useState<any>(null);
+  const router = useRouter();
 
   var innerNames;
 
@@ -146,7 +148,7 @@ const Buttons = (props:{applyGap: boolean}) => {
   }
 
   return (
-    <ButtonContainer applyGap = {props.applyGap}>
+    <ButtonContainer applyGap = {props.applyGap} scroll={`${router.route == "/" ? "true":"false"}`}>
       <Button 
       $isSelected={select}
         onClick={(e) => {
