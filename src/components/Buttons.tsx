@@ -20,8 +20,9 @@ interface DateTypes {
   end: string;
 }
 
-const Buttons = (props:{applyGap: boolean}) => {
+const Buttons = (props: { applyGap: boolean , startDate:any, setStartDate:any,endDate:any,setEndDate:any }) => {
   // let dummy ="";
+  // console.log(props)
   const [dummy, setDummy] = useState("");
   const [state, setState] = useState([
     {
@@ -32,46 +33,19 @@ const Buttons = (props:{applyGap: boolean}) => {
   ]);
   const [selectedValue, setSelectedValue] = useState("");
   const [select, isSelect] = useState(false);
-  const [startDate, setStartDate] = useState<any>(new Date());
-  const [endDate, setEndDate] = useState<Date | any>(null);
+  // const [startDate, setStartDate] = useState<any>(new Date());
+  // const [endDate, setEndDate] = useState<Date | any>(null);
   const [defaultDate, setDefault] = useState<any>(null);
   const router = useRouter();
 
   var innerNames;
 
-  // useEffect(() => {
-  //   const defaultSelected = () => {
-  //     debugger
-  //     const today = new Date();
-  //     const day = today.getDay();
-  //     const diff = today.getDate() - day + (day === 0 ? -6 : 1);
-  //     console.log(day);
-  //     const monday = new Date(today.setDate(diff));
-
-  //     // console.log(format(monday, "do LLL"), "do LLL");
-  //     // format(monday,"do LLL")
-
-  //     let formatMonthDate = format(monday, "do LLL");
-
-  //     const sunday = new Date(monday);
-  //     sunday.setDate(sunday.getDate() + 6);
-
-  //     let formatSundayDate = format(sunday, "do LLL");
-
-  //     setDummy(formatMonthDate + "-" + formatSundayDate);
-  //     console.log(dummy);
-  //     setStartDate(monday);
-  //     setDefault(sunday);
-  //   };
-  //   defaultSelected();
-  // },[]);
-
   const onDateChange = (dates: any) => {
     debugger;
     const [start, end] = dates;
     console.log(dates, "dates");
-    setStartDate(start);
-    setEndDate(end);
+     props.setStartDate(start);
+     props.setEndDate(end);
 
     const date = new Date(2009, 10, 10); // 2009-11-10
     const month = date.toLocaleString("default", { month: "short" });
@@ -102,22 +76,15 @@ const Buttons = (props:{applyGap: boolean}) => {
 
     setDummy(formatMonthDate + "-" + formatSundayDate);
     console.log(dummy);
-    setStartDate(monday);
-    setEndDate(sunday);
-
-    // console.log(monday);
-    // console.log(sunday);
+    props.setStartDate(monday);
+    props.setEndDate(sunday);
   };
 
   const handleYesterday = () => {
     const today = new Date();
     today.setDate(today.getDate() - 1);
-    setStartDate(today);
-    setEndDate(today);
-
-    // setStartDate([{today},{today}]);
-
-    //setEndDate(null);
+    props.setStartDate(today);
+    props.setEndDate(today);
   };
 
   const handleLastWeek = () => {
@@ -128,34 +95,35 @@ const Buttons = (props:{applyGap: boolean}) => {
     const now = new Date();
 
     const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-    setStartDate(firstDayOfMonth);
+    props.setStartDate(firstDayOfMonth);
 
     const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-    setEndDate(lastDayOfMonth);
+    props.setEndDate(lastDayOfMonth);
 
     console.log(lastDayOfMonth);
   };
 
-  const handleChange =  (value: string) => {
+  const handleChange = (value: string) => {
     console.log(value);
     innerNames = value;
-    handleYesterday() 
+    handleYesterday();
     setSelectedValue(innerNames);
-    console.log(selectedValue,"isSelected");
-    console.log(innerNames === selectedValue)
+    console.log(selectedValue, "isSelected");
+    console.log(innerNames === selectedValue);
 
-    isSelect(innerNames === selectedValue)
-  }
+    isSelect(innerNames === selectedValue);
+  };
 
   return (
-    <ButtonContainer applyGap = {props.applyGap} scroll={`${router.route == "/" ? "true":"false"}`}>
-      <Button 
-      $isSelected={select}
+    <ButtonContainer
+      applyGap={props.applyGap}
+      scroll={`${router.route == "/" ? "true" : "false"}`}
+    >
+      <Button
+        $isSelected={select}
         onClick={(e) => {
-          handleChange(e.target.innerText)
+          handleChange(e.target.innerText);
         }}
-        
-        // isSelected
         value="Yesterday"
       >
         Yesterday
@@ -163,7 +131,7 @@ const Buttons = (props:{applyGap: boolean}) => {
       <Button
         $isSelected={select}
         onClick={(e) => {
-          handleChange(e.target.innerText)
+          handleChange(e.target.innerText);
         }}
         $isSelected={select}
       >
@@ -174,26 +142,17 @@ const Buttons = (props:{applyGap: boolean}) => {
       <Wrapper>
         <DatePickerInput
           id="dynamic"
-          startDate={startDate}
-          endDate={endDate}
-          selected={startDate}
+          startDate={props.startDate}
+          endDate={props.endDate}
+          selected={props.startDate}
           dateFormat="d MMM"
-          // onLoad={defaultSelected}
-          // inline
           selectsRange
           onChange={onDateChange}
-          value={startDate}
+          value={props.startDate}
           calendarClassName="rasta-stripes"
           wrapperClassName="datePicker"
         />
       </Wrapper>
-      {/* <DateRange
-        editableDateInputs={true}
-        moveRangeOnFirstSelection={false}
-        ranges={state}
-        onChange={(item) => setState([item.selection])}
-        // rangeColors="green"
-      /> */}
     </ButtonContainer>
   );
 };

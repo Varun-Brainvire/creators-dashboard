@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +12,8 @@ import {
 import { Line } from "react-chartjs-2";
 import faker from "faker";
 import { LineChartDiv } from "./styles/ChartDiv.styles";
+import { memo } from 'react';
+import jsonData from "../../data.json"
 
 ChartJS.register(
   CategoryScale,
@@ -23,61 +25,65 @@ ChartJS.register(
   // Legend
 );
 
-export const options = {
-  responsive: true,
+const Chart = (props: { applyGap: boolean , startDate:any, setStartDate:any,endDate:any,setEndDate:any }) => {
+  console.log(props.startDate,"Inside Chart")
 
-  scales: {
-    xAxes: [
+  useEffect(() => {
+    
+  },[props.startDate])
+
+  // const labels = jsonData.data.map((item) => {item.earnings})
+
+  console.log(jsonData,"jsonData")
+
+  const data = {
+    labels:jsonData.data.map((item) => item.date),
+    datasets: [
       {
-        ticks: { display: false },
-        gridLines: {
-          display: false,
-          drawBorder: false,
-        },
+        // label: "Dataset 1",
+        data:jsonData.data.map((item) => item.earnings),
+        // data:`${[{x:props.startDate,y:jsonData.data.map((item) => {item.earnings})}]}`,
+        borderColor: "black",
+        pointBorderColor: "rgb(255, 99, 132)",
+        tension: 0.4,
+        pointRadius: 0,
       },
     ],
-    yAxes: [
-      {
-        ticks: { display: false },
-        gridLines: {
-          display: false,
-          drawBorder: false,
+    options: {
+      scales: {
+        myScale: {
+          type: "",
+          position: "right", // `axis` is determined by the position as `'y'`
+        },
+        xAxes:{
+          type:"time"
         },
       },
-    ],
-  },
-
-  plugins: {
-    legend: {
-      // position: 'top' as const,
+      
     },
-    title: {
-      display: true,
-      text: "Chart.js Line Chart",
+  };  
+
+  const options = {
+    scales: { x: { display: false }, y: { display: false } },
+    responsive: true,
+  
+    plugins: {
+      legend: {
+        // position: 'top' as const,
+        display: false,
+      },
+      title: {
+        display: false,
+        text: "Chart.js Line Chart",
+      },
     },
-  },
-};
+  };
+  
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      // label: "Dataset 1",
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "rgb(0, 0, 0)",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-    },
-  ],
-};
-
-const Chart = () => {
-  // console.log(document.getElementsByTagName("canvas"),"canvas")
   return (
-    <LineChartDiv>
-      <Line options={options} data={data} />;
-    </LineChartDiv>
+    <>
+      <Line options={options} data={data} width={"1100"} />
+    </>
   );
 };
 

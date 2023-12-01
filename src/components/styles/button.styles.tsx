@@ -534,3 +534,4 @@ export const TopProductDiv = styled.div`
   gap: 2rem;
   padding: 0px 32px;
 `;
+

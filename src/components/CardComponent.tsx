@@ -37,17 +37,17 @@ interface Post {
 }
 
 const CardComponent = (props: Product | Post, title: string) => {
-  console.log(props, "Inside Card Component");
+  // console.log(props, "Inside Card Component");
 
   const [data, setData] = useState({});
 
   props.productData.map((items: any) => {
-    console.log(items, "items");
+    // console.log(items, "items");
     // setData(items.flag)
   });
 
   const router = useRouter();
-  console.log(router, "ROUTER");
+  // console.log(router, "ROUTER");
 
   return (
     <>
