@@ -9,7 +9,6 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
-import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import format from "date-fns/format";
@@ -20,9 +19,14 @@ interface DateTypes {
   end: string;
 }
 
-const Buttons = (props: { applyGap: boolean , startDate:any, setStartDate:any,endDate:any,setEndDate:any }) => {
-  // let dummy ="";
-  // console.log(props)
+const Buttons = (props: {
+  applyGap?: boolean;
+  startDate: any;
+  setStartDate: any;
+  endDate: any;
+  setEndDate: any;
+}) => {
+
   const [dummy, setDummy] = useState("");
   const [state, setState] = useState([
     {
@@ -33,8 +37,6 @@ const Buttons = (props: { applyGap: boolean , startDate:any, setStartDate:any,en
   ]);
   const [selectedValue, setSelectedValue] = useState("");
   const [select, isSelect] = useState(false);
-  // const [startDate, setStartDate] = useState<any>(new Date());
-  // const [endDate, setEndDate] = useState<Date | any>(null);
   const [defaultDate, setDefault] = useState<any>(null);
   const router = useRouter();
 
@@ -44,17 +46,15 @@ const Buttons = (props: { applyGap: boolean , startDate:any, setStartDate:any,en
     debugger;
     const [start, end] = dates;
     console.log(dates, "dates");
-     props.setStartDate(start);
-     props.setEndDate(end);
+    props.setStartDate(start);
+    props.setEndDate(end);
 
-    const date = new Date(2009, 10, 10); // 2009-11-10
+    const date = new Date(2009, 10, 10);
     const month = date.toLocaleString("default", { month: "short" });
-    // setStartDate(date)
     console.log(month);
 
     let monentDate = moment().format("MMM Do");
     console.log(monentDate);
-    // setStartDate(monentDate)
   };
 
   const handleThisWeekClick = () => {
@@ -63,9 +63,6 @@ const Buttons = (props: { applyGap: boolean , startDate:any, setStartDate:any,en
     const diff = today.getDate() - day + (day === 0 ? -6 : 1);
     console.log(day);
     const monday = new Date(today.setDate(diff));
-
-    // console.log(format(monday, "do LLL"), "do LLL");
-    // format(monday,"do LLL")
 
     let formatMonthDate = format(monday, "do LLL");
 
@@ -88,7 +85,7 @@ const Buttons = (props: { applyGap: boolean , startDate:any, setStartDate:any,en
   };
 
   const handleLastWeek = () => {
-    const now = new Date();
+   
   };
 
   const handleLastMonth = () => {
@@ -107,6 +104,7 @@ const Buttons = (props: { applyGap: boolean , startDate:any, setStartDate:any,en
     console.log(value);
     innerNames = value;
     handleYesterday();
+    handleLastWeek();
     setSelectedValue(innerNames);
     console.log(selectedValue, "isSelected");
     console.log(innerNames === selectedValue);

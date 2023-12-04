@@ -14,23 +14,24 @@ import {
 } from "@/components/styles/button.styles";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import moment from "moment";
-// import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import format from "date-fns/format";
 import Buttons from "@/components/Buttons";
 import CardComponent from "@/components/CardComponent";
 import TopPostData from "../../TopPostData.json";
 import svg from "../../public/left-arrow-svgrepo-com.svg";
 import Image from "next/image";
+import Mobile from "@/components/Mobile";
 
 const Topposts = () => {
+  const [startDate, setStartDate] = useState<Date | any>(new Date());
+  const [endDate, setEndDate] = useState<Date | any>(null);
   return (
     <>
       <TopProductDiv>
+      <Mobile heading="Top Posts"/>
         <CombineButtonDiv>
-          <Buttons applyGap={false} />
+          <Buttons applyGap={false} startDate={startDate} setStartDate={setStartDate}  endDate={endDate} setEndDate={setEndDate}/>
           <ProductDetailPageArrowDiv>
             <StyledLink href="/">
               <Image src={svg} alt="arrow svg" height={20} width={20} />

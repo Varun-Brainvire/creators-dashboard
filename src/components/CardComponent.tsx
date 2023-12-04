@@ -27,6 +27,7 @@ interface Product {
   type: string;
   percent: number;
   cvrPercent: number;
+  flag:string
 }
 
 interface Post {
@@ -36,18 +37,18 @@ interface Post {
   flag: string;
 }
 
-const CardComponent = (props: Product | Post, title: string) => {
-  // console.log(props, "Inside Card Component");
+interface Stores {
+  id:number
+  storeName:string
+  price:string
+  flag:string
+}
+
+const CardComponent = (props: Product | Post | Stores, title: string) => {
+  console.log(props, "Inside Card Component");
 
   const [data, setData] = useState({});
-
-  props.productData.map((items: any) => {
-    // console.log(items, "items");
-    // setData(items.flag)
-  });
-
   const router = useRouter();
-  // console.log(router, "ROUTER");
 
   return (
     <>
@@ -60,7 +61,7 @@ const CardComponent = (props: Product | Post, title: string) => {
         </StyledLink>
       </StickyTitle>
       <MainWrapper height={props.height}>
-        {props.productData.map((details) => {
+        {props.productData.map((details:Product) => {
           if (details.flag === "product") {
             return (
               <>
@@ -106,11 +107,11 @@ const CardComponent = (props: Product | Post, title: string) => {
                 )}
                 {router.route == "/topposts" ? (
                   <TitleDiv forDashBoard={true} width={false}>
-                    <p>{details.title}</p>
+                    <p>{props.title}</p>
                   </TitleDiv>
                 ) : (
                   <TitleDiv forDashBoard={true} width={true}>
-                    <p>{details.title}</p>
+                    <p>{props.title}</p>
                   </TitleDiv>
                 )}
 

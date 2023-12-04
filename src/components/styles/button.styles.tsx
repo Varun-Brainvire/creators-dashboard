@@ -2,6 +2,14 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import Link from "next/link";
 
+interface Types {
+  applyGap?: boolean;
+  scroll?: boolean;
+  forProductDetails?: boolean;
+  paddingapply?: boolean;
+  width?: boolean;
+}
+
 type ColumnProps = {
   size?: number;
   sizeSm?: number;
@@ -14,6 +22,7 @@ type ColumnProps = {
   marginLeft?: number;
   margin?: boolean;
   height?: boolean;
+  padding?:boolean
 };
 
 export const Button = styled.button<{ $isSelected?: boolean }>`
@@ -28,7 +37,6 @@ export const Button = styled.button<{ $isSelected?: boolean }>`
   font-weight: 500;
   font-style: normal;
   line-height: normal;
-  /* float: right; */
   color: ${({ $isSelected }) => ($isSelected ? "#3A3A3A" : "#9D9D9D")};
   border: ${({ $isSelected }) =>
     $isSelected ? "2px solid #3A3A3A" : "1px solid #9D9D9D"};
@@ -37,15 +45,9 @@ export const Button = styled.button<{ $isSelected?: boolean }>`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* border: 1px solid red; */
   justify-content: center;
   max-width: 1320px;
   margin: auto;
-  /* margin: 0 13%; */
-  /* height: 122vh; */
-  /* align-items: center; */
-  /* width: 70%; */
-  /* max-width: 1440px; */
   @media only screen and (max-width: 1400px) {
     max-width: 1200px;
   }
@@ -67,8 +69,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ButtonContainer = styled.div`
-  /* height: 32px; */
+export const ButtonContainer = styled.div<Types>`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -81,28 +82,15 @@ export const ButtonContainer = styled.div`
     }
   }
 
-  overflow-x: ${({scroll}) => (scroll ? "":"auto")};
-  
+  overflow-x: ${({ scroll }) => (scroll ? "" : "auto")};
+
   @media (max-width: 992px) {
     overflow-x: scroll;
 
     &::-webkit-scrollbar {
-      /* width: 1px; */
       background: #f1f1f1;
     }
   }
-
-  /* @media (max-width: 576px) {
-    overflow-x: scroll;
-    justify-content: flex-start;
-    /* border-radius: 0px; */
-  /* } */
-
-  /* @media (max-width: 768px) {
-    overflow-x: scroll;
-    justify-content: flex-start;
-    /* border-radius: 0px; 
-  }*/ 
 `;
 
 export const DatePickerDiv = styled.div`
@@ -125,13 +113,8 @@ export const DatePickerInput = styled(DatePicker)`
 
 export const ProductComponentDiv = styled.div`
   margin-top: 16px;
-  /* border: 1px solid black; */
-  /* margin: 50px; */
-  /* padding: 50px; */
   height: 360px;
   width: 90.3%;
-  /* background-color: #efefef; */
-  /* height:100px; */
 `;
 
 export const Wrapper = styled.div`
@@ -194,11 +177,9 @@ export const Column = styled.div<ColumnProps>`
   margin-top: ${({ marginTop }) => marginTop + `px`};
 
   /* margin-left: ${({ marginLeft }) => marginLeft + `px`}; */
-  /* border:1px solid black; */
   border-radius: 5px;
   margin-left: ${({ margin }) => (margin ? "10px" : "0px 150px")};
   height: ${({ height }) => (height ? "57vh" : "")};
-  /* min-width: 33%; */
   -webkit-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   -moz-box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
   box-shadow: 0px 0px 22px -10px rgba(130, 120, 130, 1);
@@ -245,7 +226,6 @@ export const OneCardComponent = styled.p`
 export const CardsComponentContainer = styled.div`
   margin-top: 20px;
   display: flex;
-  /* flex-direction: row; */
   justify-content: space-between;
 `;
 
@@ -279,10 +259,11 @@ export const ProductContent = styled.div`
   }
 `;
 
-export const TitleDiv = styled.div`
+export const TitleDiv = styled.div<Types>`
   display: flex;
   width: ${({ width }) => (width ? "60%" : "66%")};
   flex-direction: column;
+  line-height: 21px;
   p {
     font-size: 14px;
     overflow: hidden;
@@ -324,8 +305,6 @@ export const SekDiv = styled.div`
     line-height: 21px;
   }
   span {
-    /* font-size: 10px;
-     */
     font-family: Strawford;
     font-size: 12px;
     font-style: normal;
@@ -334,25 +313,26 @@ export const SekDiv = styled.div`
   }
 
   @media (min-width: 992px) {
-    /* width: 33%; */
     font-size: 15px;
     font-weight: 500;
   }
 
   @media (max-width: 576px) {
-    /* width: 33%; */
     font-size: 15px;
     font-weight: 500;
   }
 
   @media (max-width: 768px) {
-    /* width: 33%; */
     font-size: 15px;
     font-weight: 500;
   }
 `;
-export const MainWrapper = styled.div`
-  /* max-height: 47.5vh; */
+
+interface Height {
+  height: boolean;
+}
+
+export const MainWrapper = styled.div<Height>`
   max-height: ${({ height }) => (height ? "" : "47.5vh")};
   overflow-y: scroll;
 
@@ -379,13 +359,6 @@ export const StyledLink = styled(Link)`
 `;
 
 export const OperationButtons = styled.button`
-  /* font-family: "Strawford", sans-serif;
-  background-color: white;
-  border-radius: 20px;
-  margin: 8px;
-  padding: 10px;
-  white-space: nowrap; */
-
   font-family: "Strawford", sans-serif;
   background-color: white;
   border-radius: 20px;
@@ -403,33 +376,23 @@ export const OperationButtons = styled.button`
 
 export const OperationButtonsContainer = styled.div`
   display: flex;
-  /* background-color: red; */
-  /* justify-content: flex-end; */
   align-items: center;
-  /* margin-bottom: 31px; */
   flex-wrap: nowrap;
   overflow-x: auto;
-  /* width: 450px; */
   .rdrMonths {
     .rdrStartEdge,
     .rdrInRange {
-      /* background: red !important; */
     }
   }
-  /* max-height: 47.5vh; */
-  /* overflow-x: scroll; */
 
   @media (max-width: 576px) {
     overflow-x: scroll;
     justify-content: flex-start;
-    /* background-color: red; */
-    /* border-radius: 0px; */
   }
 
   @media (max-width: 768px) {
     overflow-x: scroll;
     justify-content: flex-start;
-    /* border-radius: 0px; */
   }
 `;
 
@@ -443,7 +406,6 @@ export const CombineButtonDiv = styled.div`
   @media (max-width: 768px) {
     overflow-x: auto;
     margin-bottom: 15px;
-    border: 1px solid blue;
 
     &::-webkit-scrollbar {
       height: 5px;
@@ -455,7 +417,6 @@ export const CombineButtonDiv = styled.div`
   @media (max-width: 576px) {
     overflow-x: auto;
     margin-bottom: 15px;
-    border: 1px solid blue;
 
     &::-webkit-scrollbar {
       height: 5px;
@@ -509,11 +470,10 @@ export const ProductDetailPageArrowDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const ImageAndTitleDiv = styled.div`
+export const ImageAndTitleDiv = styled.div<Types>`
   width: ${({ width }) => (width ? "0%" : "15%")};
   display: ${({ forProductDetails }) => (forProductDetails ? "flex" : "block")};
   align-items: center;
-  /* justify-content: space-between; */
   gap: ${({ applyGap }) => (applyGap ? "16px" : "10px")};
   padding: ${({ paddingapply }) => (paddingapply ? "10px 32px" : "0px")};
 `;
@@ -535,3 +495,37 @@ export const TopProductDiv = styled.div`
   padding: 0px 32px;
 `;
 
+export const TopNavigationContainer = styled.div`
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10.37px;
+  padding: 0px 33.19px;
+`;
+
+export const TopNavigationTextAndIcons = styled.div`
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0px 31px 0px;
+
+  @media (max-width: 576px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10.37px;
+    margin: 5px 0px 31px 0px;
+    span {
+      color: #000;
+      text-align: center;
+      font-family: Strawford;
+      font-size: 18.67px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+
+  margin: 5px 0px 31px 0px;
+`;

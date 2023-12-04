@@ -12,10 +12,8 @@ import TopPost from "../../TopPostData.json";
 import TopStores from "../../TopStoresData.json";
 
 const ProductComponent = () => {
-  // console.log(TopProductData);
   return (
     <CardsComponentContainer>
-      {/* <ContentDiv /> */}
       <Columns>
         <Column
           marginTop={4}
